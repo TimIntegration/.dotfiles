@@ -1,4 +1,4 @@
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -58,7 +58,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -82,16 +82,21 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
   fzf
-  zsh-interactive-cd
+  # zsh-interactive-cd
   safe-paste
   last-working-dir
   extract
   colored-man-pages
+  ssh-agent
+  docker
+  minikube
+  virtualenv
   )
 
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +115,15 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+# https://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
+function expand-alias() {
+	zle _expand_alias
+  zle expand-word
+	# zle self-insert
+}
+zle -N expand-alias
+bindkey -M main '^ ' expand-alias
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -123,23 +137,23 @@ bindkey -M viins '^[OH' beginning-of-line  # Home
 bindkey -M viins '^[OF' end-of-line  # End
 bindkey -M viins '^a' beginning-of-line  # Home
 bindkey -M viins '^e' end-of-line  # End
-bindkey '^_' backward-delete-char  # ctrl+/  | <Backspace>
+bindkey -M viins '^[[Z' autosuggest-accept  # shift + tab  | accept entire line
+
+# built in bindings
+# https://help.gnome.org/users/gnome-terminal/stable/adv-keyboard-shortcuts.html.en
 bindkey '^f' forward-word  # ctrl+f  | right arrow
 bindkey '^b' backward-word  # ctrl+b  | left arrow
-bindkey -M viins '^[[Z' autosuggest-accept  # shift + tab  | accept entire line
-bindkey '^I' complete-word       # tab          | complete
-# built in bindings
+bindkey '^k' kill-line  # ctrl+k  | Delete from the cursor to the end of the line
+# bindkey '^y' yank  # not working
+# bindkey '^_' backward-delete-char  # ctrl+/  | undo previous key
 # /-Shift-Ctrl = Bksp      = '^?'
-# [-Ctrl       = Esc       = '^['        | vi-cmd-mode
-
-# https://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
-function expand-alias() {
-	zle _expand_alias
-  zle expand-word
-	zle self-insert
-}
-zle -N expand-alias
-bindkey -M main '^ ' expand-alias
+# ctrl+p       = Up         | previous command
+# ctrl+h       = Bksp       | backward-delete-char
+# Ctrl+[       = Esc        | vi-cmd-mode
+# Ctrl+g       = Esc        | exit menu
+# Ctrl+z       | send process to background, fg <prior cmd> to foreground
+# bindkey '^I' complete-word       # tab          | complete
+# Command list to bind: https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -163,17 +177,20 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 
+# https://github.com/junegunn/fzf
 # Customize how fzf handles certain commands 
 _fzf_comprun() { 
   local command=$1 
   shift 
 
   case "$command" in 
-    cd) fzf "$@" --preview 'tree -C {} | head -20'  --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
-    ls) fzf "$@" --preview 'ls -la {} | head -20'  --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
-    cat) fzf "$@" --preview 'batcat --style=numbers --color=always --line-range :50 {}'   --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
     bat) fzf "$@" --preview 'batcat --style=numbers --color=always --line-range :50 {}'   --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
     batcat) fzf "$@" --preview 'batcat --style=numbers --color=always --line-range :50 {}'   --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
+    cat) fzf "$@" --preview 'batcat --style=numbers --color=always --line-range :50 {}'   --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
+    cd) fzf "$@" --preview 'tree -C {} | head -20'  --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
+    code) fzf "$@" --preview 'batcat --style=numbers --color=always --line-range :50 {}'   --bind shift-up:preview-page-up,shift-down:preview-page-down ;; 
+    ls) fzf "$@" --preview 'ls -la {} | head -20'  --bind shift-up:preview-page-up,shift-down:preview-page-down ;;
+    source) fzf "$@" --preview 'batcat --style=numbers --color=always --line-range :50 {}'   --bind shift-up:preview-page-up,shift-down:preview-page-down ;;  
     *) fzf "$@" ;; 
   esac 
 } 
@@ -190,14 +207,19 @@ _fzf_comprun() {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias k="kubectl"
-alias fd=fdfind
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-
-
 source <(kubectl completion zsh)
+
+alias fd=fdfind
+# https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
+# Ctrl+r  | paste from history
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+# Ctrl+t  | paste path of files and folder
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+# Alt+c  | cd to specific directory
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

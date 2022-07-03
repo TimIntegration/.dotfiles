@@ -12,5 +12,13 @@
   "files.associations": {
     "*.js": "javascriptreact"
   },
-  "editor.formatOnPaste": true
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font','Droid Sans Mono', monospace",
+  "editor.formatOnPaste": true,
+  "editor.fontLigatures": true,
+  "editor.renderWhitespace": "all",
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": false,
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "editor.lineNumbers": "relative"
 }
