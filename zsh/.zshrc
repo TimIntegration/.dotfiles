@@ -206,6 +206,9 @@ _fzf_comprun() {
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
+
 alias k="kubectl"
 source <(kubectl completion zsh)
 
