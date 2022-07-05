@@ -101,7 +101,7 @@
     {  // vim split navigation
         "key": "ctrl+w",
         "command": "extension.vim_ctrl+w",
-        "when": "editorTextFocus && vim.active && !inDebugRepl"
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
     },
     {
         "key": "ctrl+w",
