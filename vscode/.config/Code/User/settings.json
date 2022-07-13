@@ -3,7 +3,7 @@
   "editor.minimap.enabled": false,
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 16,
-  "editor.wordWrap":"bounded",
+  "editor.wordWrap": "bounded",
   // "telemetry.enableTelemetry": false,
   // "editor.parameterHints.enabled": false,
   // "security.workspace.trust.enabled": false,
@@ -21,7 +21,6 @@
   "vim.hlsearch": true,
   "editor.lineNumbers": "relative",
   "workbench.editor.splitInGroupLayout": "vertical",
-  
   "vim.leader": "<space>",
   "vim.insertModeKeyBindingsNonRecursive": [
     {

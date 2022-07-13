@@ -1,0 +1,12 @@
+{
+    "mapping": {
+        "1,276,1": [
+            "m(Super_L,k(r))",
+            "keyboard"
+        ],
+        "1,275,1": [
+            "hold_keys(Alt_L,Super_L,r)",
+            "keyboard"
+        ]
+    }
+}

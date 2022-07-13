@@ -199,13 +199,18 @@
         "command": "cursorEnd",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
     },
-    {  // inspired by vim https://linuxhint.com/how-to-use-vim-split-screen/
-        "key": "ctrl+w s",
+    {  // ctrl+] instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
+        "key": "ctrl+] s",
         "command": "workbench.action.splitEditorToBelowGroup",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     },
     {
-        "key": "ctrl+w \\",
+        "key": "ctrl+] q",
+        "command": "workbench.action.joinAllGroups",
+        "when": "vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+] \\",
         "command": "workbench.action.splitEditorToRightGroup",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
     },
@@ -232,10 +237,5 @@
     {
         "key": "ctrl+j",
         "command": "-workbench.action.togglePanel"
-    },
-    {
-        "key": "ctrl+w q",
-        "command": "workbench.action.joinAllGroups",
-        "when": "vim.active && !inDebugRepl && vim.mode != 'Insert'"
     }
 ]
