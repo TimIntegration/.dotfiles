@@ -144,6 +144,9 @@ bindkey -M viins '^[[Z' autosuggest-accept  # shift + tab  | accept entire line
 bindkey '^f' forward-word  # ctrl+f  | right arrow
 bindkey '^b' backward-word  # ctrl+b  | left arrow
 bindkey '^k' kill-line  # ctrl+k  | Delete from the cursor to the end of the line
+bindkey '^p' up-line-or-history
+bindkey '^n' down-line-or-history
+
 # bindkey '^y' yank  # not working
 # bindkey '^_' backward-delete-char  # ctrl+/  | undo previous key
 # /-Shift-Ctrl = Bksp      = '^?'
