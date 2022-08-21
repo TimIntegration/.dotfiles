@@ -9,7 +9,9 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-
+# docker ps --format=$FORMAT
+# or docker container ls --format=#FORMAT
+DPS_FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}\nSTATUS\t{{.Status}}\nPORTS\t{{.Ports}}\nNAMES\t{{.Names}}\n"
 
 
 # Path to your oh-my-zsh installation.
@@ -238,3 +240,19 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/tenacity/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tenacity/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tenacity/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tenacity/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

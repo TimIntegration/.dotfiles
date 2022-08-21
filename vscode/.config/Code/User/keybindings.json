@@ -1,14 +1,41 @@
 // Place your key bindings in this file to override the defaults
 [
-    { "key": "cmd+1", "command": "workbench.action.openEditorAtIndex1" },
-    { "key": "cmd+2", "command": "workbench.action.openEditorAtIndex2" },
-    { "key": "cmd+3", "command": "workbench.action.openEditorAtIndex3" },
-    { "key": "cmd+4", "command": "workbench.action.openEditorAtIndex4" },
-    { "key": "cmd+5", "command": "workbench.action.openEditorAtIndex5" },
-    { "key": "cmd+6", "command": "workbench.action.openEditorAtIndex6" },
-    { "key": "cmd+7", "command": "workbench.action.openEditorAtIndex7" },
-    { "key": "cmd+8", "command": "workbench.action.openEditorAtIndex8" },
-    { "key": "cmd+9", "command": "workbench.action.openEditorAtIndex9" },
+    {
+        "key": "cmd+1",
+        "command": "workbench.action.openEditorAtIndex1"
+    },
+    {
+        "key": "cmd+2",
+        "command": "workbench.action.openEditorAtIndex2"
+    },
+    {
+        "key": "cmd+3",
+        "command": "workbench.action.openEditorAtIndex3"
+    },
+    {
+        "key": "cmd+4",
+        "command": "workbench.action.openEditorAtIndex4"
+    },
+    {
+        "key": "cmd+5",
+        "command": "workbench.action.openEditorAtIndex5"
+    },
+    {
+        "key": "cmd+6",
+        "command": "workbench.action.openEditorAtIndex6"
+    },
+    {
+        "key": "cmd+7",
+        "command": "workbench.action.openEditorAtIndex7"
+    },
+    {
+        "key": "cmd+8",
+        "command": "workbench.action.openEditorAtIndex8"
+    },
+    {
+        "key": "cmd+9",
+        "command": "workbench.action.openEditorAtIndex9"
+    },
     {
         "key": "ctrl+tab",
         "command": "workbench.action.nextEditor"
@@ -55,7 +82,7 @@
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
-    {  // paste from register
+    { // paste from register
         "key": "ctrl+r",
         "command": "workbench.action.openRecent",
         "when": "!editorFocus"
@@ -98,7 +125,7 @@
         "key": "ctrl+w",
         "command": "-workbench.action.closeActiveEditor"
     },
-    {  // vim split navigation
+    { // vim split navigation
         "key": "ctrl+w",
         "command": "extension.vim_ctrl+w",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
@@ -190,7 +217,8 @@
         "key": "ctrl+e",
         "command": "workbench.action.quickOpen",
         "when": "vim.mode != 'Insert'"
-    },    {
+    },
+    {
         "key": "ctrl+e",
         "command": "-workbench.action.quickOpen"
     },
@@ -199,40 +227,55 @@
         "command": "cursorEnd",
         "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
     },
-    {  // ctrl+] instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
-        "key": "ctrl+] s",
-        "command": "workbench.action.splitEditorToBelowGroup",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+    { // ctrl+] instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
+        "key": "ctrl+] j",
+        "command": "workbench.action.moveEditorToBelowGroup",
+        "when": ""
+    },
+    {
+        "key": "ctrl+] l",
+        "command": "workbench.action.moveEditorToRightGroup",
+        "when": ""
+    },
+    {
+        "key": "ctrl+] h",
+        "command": "workbench.action.moveEditorToLeftGroup",
+        "when": ""
+    },
+    {
+        "key": "ctrl+] k",
+        "command": "workbench.action.moveEditorToAboveGroup",
+        "when": ""
+    },
+    {
+        "key": "ctrl+] u",
+        "command": "workbench.action.moveEditorToPreviousGroup",
+        "when": ""
     },
     {
         "key": "ctrl+] q",
         "command": "workbench.action.joinAllGroups",
-        "when": "vim.active && !inDebugRepl && vim.mode != 'Insert'"
-    },
-    {
-        "key": "ctrl+] \\",
-        "command": "workbench.action.splitEditorToRightGroup",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+        "when": ""
     },
     {
         "key": "ctrl+h",
         "command": "workbench.action.navigateLeft",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+        "when": "vim.mode != 'Insert'"
     },
     {
         "key": "ctrl+l",
         "command": "workbench.action.navigateRight",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+        "when": ""
     },
     {
-        "key": "ctrl+k",
+        "key": "ctrl+k k",
         "command": "workbench.action.navigateUp",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+        "when": ""
     },
     {
         "key": "ctrl+j",
         "command": "workbench.action.navigateDown",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+        "when": ""
     },
     {
         "key": "ctrl+j",
@@ -245,7 +288,17 @@
     },
     {
         "key": "ctrl+shift+enter",
+        "command": "notebook.cell.executeAndSelectBelow",
+        "when": "notebookCellListFocused || editorTextFocus && inputFocus && notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+shift+enter",
         "command": "-notebook.cell.insertCodeCellAbove",
         "when": "notebookCellListFocused && !inputFocus"
+    },
+    {
+        "key": "ctrl+]",
+        "command": "-editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]
