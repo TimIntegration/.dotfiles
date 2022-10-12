@@ -300,5 +300,10 @@
         "key": "ctrl+]",
         "command": "-editor.action.indentLines",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
     }
 ]
