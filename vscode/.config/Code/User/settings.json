@@ -1,8 +1,8 @@
 {
   "workbench.colorTheme": "Default Light+",
   "editor.minimap.enabled": false,
-  "editor.fontSize": 18,
-  "terminal.integrated.fontSize": 18,
+  "editor.fontSize": 16,
+  "terminal.integrated.fontSize": 16,
   "editor.wordWrap": "bounded",
   "editor.showFoldingControls": "always",
   "editor.folding": true,
@@ -15,9 +15,9 @@
   "files.associations": {
     "*.js": "javascriptreact"
   },
-  "editor.fontFamily": "'CaskaydiaCove Nerd Font','Droid Sans Mono', monospace",
+  "editor.fontFamily": "'MesloLGS NF','Droid Sans Mono', monospace",
   "editor.formatOnPaste": true,
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.renderWhitespace": "all",
   "vim.startInInsertMode": true,
   "vim.useSystemClipboard": true,
@@ -163,9 +163,9 @@
   "vim.statusBarColors.easymotioninputmode": "#007ACC",
   "vim.statusBarColors.surroundinputmode": "#007ACC",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#BF616A",
-    "statusBar.noFolderBackground": "#BF616A",
-    "statusBar.debuggingBackground": "#BF616A",
+    "statusBar.background": "#8FBCBB",
+    "statusBar.noFolderBackground": "#8FBCBB",
+    "statusBar.debuggingBackground": "#8FBCBB",
     "statusBar.foreground": "#000",
     "statusBar.debuggingForeground": "#000"
   },
