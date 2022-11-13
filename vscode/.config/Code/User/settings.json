@@ -3,7 +3,7 @@
   "editor.minimap.enabled": false,
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 16,
-  "editor.wordWrap": "bounded",
+  "editor.wordWrap": "wordWrapColumn",
   "editor.showFoldingControls": "always",
   "editor.folding": true,
   "editor.foldingStrategy": "indentation",
@@ -12,6 +12,7 @@
   // "security.workspace.trust.enabled": false,
   // "debug.javascript.codelens.npmScripts": "never",
   "workbench.statusBar.visible": true,
+  "editor.rulers": [ 80, 120 ],
   "files.associations": {
     "*.js": "javascriptreact"
   },
@@ -21,121 +22,106 @@
   "disableLigatures.mode": "Line",
   "editor.renderWhitespace": "all",
   "vim.startInInsertMode": true,
+  "files.autoSave": "onFocusChange",
+  "vim.easymotion": true,
+  "vim.incsearch": true,
   "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": false,
+  "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
+  "vim.sneak": true,
+  "vim.sneakReplacesF": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
   "editor.lineNumbers": "relative",
   "vim.leader": "<space>",
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "j",
-        "k"
-      ],
-      "after": [
-        "<ESC>"
-      ]
+      "before": ["j", "k"],
+      "after": ["<ESC>"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "J"
-      ],
-      "after": [
-        "5",
-        "j"
-      ]
+      "before": ["<Leader>", "t", "t"],
+      "commands": [":tabnew"]
     },
     {
-      "before": [
-        "K"
-      ],
-      "after": [
-        "5",
-        "k"
-      ]
+      "before": ["<Leader>","t","o"],
+      "commands": [":tabo"]
     },
     {
-      "before": [
-        "<Leader>",
-        "j"
-      ],
-      "after": [
-        "J"
-      ]
+      "before": ["<Leader>", "/"],
+      "commands": [":nohl"]
     },
     {
-      "before": [
-        "<Leader>",
-        "t",
-        "t"
-      ],
-      "commands": [
-        ":tabnew"
-      ]
+      "before": ["<Leader>", "p"],
+      "commands": ["workbench.action.showCommands"]
     },
     {
-      "before": [
-        "<Leader>",
-        "t",
-        "n"
-      ],
-      "commands": [
-        ":tabnext"
-      ]
+      "before": [ "<Leader>", "t"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    { // <leader>,w instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
+      "before": ["<Leader>", "w", "j"],
+      "commands": ["workbench.action.moveEditorToBelowGroup"]
     },
     {
-      "before": [
-        "<Leader>",
-        "t",
-        "p"
-      ],
-      "commands": [
-        ":tabprev"
-      ]
+      "before": ["<Leader>", "w", "l"],
+      "commands": ["workbench.action.moveEditorToRightGroup"]
     },
     {
-      "before": [
-        "<Leader>",
-        "t",
-        "o"
-      ],
-      "commands": [
-        ":tabo"
-      ]
+      "before": ["<Leader>", "w", "h"],
+      "commands": ["workbench.action.moveEditorToLeftGroup"]
     },
     {
-      "before": [
-        "<Leader>",
-        "/"
-      ],
-      "commands": [
-        ":noh"
-      ]
+      "before": ["<Leader>", "w", "k"],
+      "commands": ["workbench.action.moveEditorToAboveGroup"]
     },
     {
-      "before": [
-        "<Leader>",
-        "p"
-      ],
-      "commands": [
-        "workbench.action.showCommands",
-      ]
+      "before": ["<Leader>", "w", "u"],
+      "commands": ["workbench.action.moveEditorToPreviousGroup"]
     },
     {
-      "before": [
-        "<Leader>",
-        "t"
-      ],
-      "commands": [
-        "workbench.action.gotoSymbol",
-      ]
+      "before": ["<Leader>", "w", "q"],
+      "commands": ["workbench.action.joinAllGroups"]
     }
   ],
-  "vim.sneak": true,
-  "vim.sneakReplacesF": true,
-  "vim.sneakUseIgnorecaseAndSmartcase": true,
+"vim.normalModeKeyBindings": [
+    {
+      "before": ["<tab>"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<S-tab>"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [">"],
+      "after": [">", "g", "v"]
+    },
+    {
+      "before": ["<"],
+      "after": ["<", "g", "v"]
+    },
+    {
+      "before": ["i"],
+      "after": ["<Esc>", "i"]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    // VS Code new marker @ next occurence
+    "<C-c>": false,
+    // Cut
+    "<C-x>": false,
+    // Paste
+    "<C-v>": false,
+    "<C-z>": false,
+    "<C-y>": false,
+    "<C-k>": false
+  },
   "vim.statusBarColorControl": true,
   "vim.statusBarColors.normal": [
     "#8FBCBB",
@@ -168,10 +154,15 @@
     "statusBar.noFolderBackground": "#BF616A",
     "statusBar.debuggingBackground": "#BF616A",
     "statusBar.foreground": "#000",
-    "statusBar.debuggingForeground": "#000"
+    "statusBar.debuggingForeground": "#000",
+    "editorRuler.foreground": "#ff4081"
   },
   "redhat.telemetry.enabled": true,
   "editor.scrollbar.verticalScrollbarSize": 24,
   "notebook.compactView": false,
-  "tabnine.experimentalAutoImports": true
+  "tabnine.experimentalAutoImports": true,
+  "vs-kubernetes": {
+    "vscode-kubernetes.minikube-path.linux": "/home/tenacity/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
+    "vscode-kubernetes.helm-path.linux": "/home/tenacity/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm"
+  }
 }

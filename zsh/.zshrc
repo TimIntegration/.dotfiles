@@ -207,7 +207,7 @@ _fzf_comprun() {
 # https://unix.stackexchange.com/questions/90853/how-can-i-run-ssh-add-automatically-without-a-password-prompt
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
-  ssh-add ~/.ssh/github_id_ed25519.pk
+  ssh-add ~/.ssh/id_ed25519_u14
 fi
 
 
