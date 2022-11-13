@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Andromeda Colorizer",
   "editor.minimap.enabled": false,
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 16,
@@ -111,7 +111,7 @@
   ],
   "vim.handleKeys": {
     "<C-a>": false,
-    "<C-f>": false,
+    "<C-f>": false,  // vscode find
     // VS Code new marker @ next occurence
     "<C-c>": false,
     // Cut
@@ -120,7 +120,8 @@
     "<C-v>": false,
     "<C-z>": false,
     "<C-y>": false,
-    "<C-k>": false
+    "<C-k>": false,  // vscode key chord
+    "<C-w>": false,  // vscode closeEditor
   },
   "vim.statusBarColorControl": true,
   "vim.statusBarColors.normal": [
@@ -164,5 +165,9 @@
   "vs-kubernetes": {
     "vscode-kubernetes.minikube-path.linux": "/home/tenacity/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
     "vscode-kubernetes.helm-path.linux": "/home/tenacity/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm"
+  },
+  "files.exclude": {
+    "": true,
+    "**/.git": false
   }
 }

@@ -27,32 +27,7 @@
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
-    {
-        "key": "ctrl+[",
-        "command": "-editor.action.outdentLines",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+[",
-        "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.active && !inDebugRepl"
-    },
 
-    {
-        "key": "ctrl+h",
-        "command": "-editor.action.startFindReplaceAction",
-        "when": "editorFocus || editorIsOpen"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "extension.vim_ctrl+h",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "-extension.vim_ctrl+h",
-        "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
-    },
     {  // vim visual mode
         "key": "ctrl+shift+v",
         "command": "extension.vim_ctrl+v",
@@ -113,19 +88,14 @@
     },
     {  // bind to End equivalent
         "key": "ctrl+e",
-        "command": "-workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "workbench.action.quickOpen",
-        "when": "vim.mode != 'Insert'"
+        "command": "-workbench.action.quickOpen",
+        "when": "inputFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
     },
     {
         "key": "ctrl+e",
         "command": "cursorEnd",
         "when": "inputFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
     },
-
     {
         "key": "ctrl+k h",
         "command": "workbench.action.navigateLeft",
@@ -166,156 +136,17 @@
         "command": "-editor.action.indentLines",
         "when": "editorTextFocus && !editorReadonly"
     },
-    {
-        "key": "ctrl+c",
-        "command": "-extension.vim_ctrl+c",
-        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
-    },
-    {  // dendron
+    {  // dendron locate
         "key": "ctrl+l",
         "command": "-extension.vim_navigateCtrlL",
         "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl",
     },
-    {  // bind to DownArrow equivalent
-        "key": "ctrl+n",
-        "command": "-workbench.action.files.newUntitledFile"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "selectNextSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "cursorDown",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "list.focusDown",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "notifications.focusNextToast",
-        "when": "notificationFocus && notificationToastsVisible"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "selectNextCodeAction",
-        "when": "codeActionMenuVisible"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "showNextParameterHint",
-        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "workbench.banner.focusNextAction",
-        "when": "bannerFocused"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "workbench.statusBar.focusNext",
-        "when": "statusBarFocused"
-    },
-
-    {
-        "key": "ctrl+n",
-        "command": "history.showNext",
-        "when": "historyNavigationForwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "interactive.history.next",
-        "when": "!suggestWidgetVisible && resourceScheme == 'vscode-interactive' && interactiveInputCursorAtBoundary != 'none' && interactiveInputCursorAtBoundary != 'top'"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "extension.vim_down",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && !parameterHintsVisible && !suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "workbench.action.interactivePlayground.arrowDown",
-        "when": "interactivePlaygroundFocus && !editorTextFocus"
-    },
-    {  // bind to UpArrow equivalent
-        "key": "ctrl+p",
-        "command": "-workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "selectPrevSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "cursorUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "extension.vim_up",
-        "when": "editorTextFocus && vim.active && !inDebugRepl && !parameterHintsVisible && !suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "history.showPrevious",
-        "when": "historyNavigationBackwardsEnabled && historyNavigationWidgetFocus && !suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "interactive.history.previous",
-        "when": "!suggestWidgetVisible && resourceScheme == 'vscode-interactive' && interactiveInputCursorAtBoundary != 'bottom' && interactiveInputCursorAtBoundary != 'none'"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "list.focusUp",
-        "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "notifications.focusPreviousToast",
-        "when": "notificationFocus && notificationToastsVisible"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "scm.viewPreviousCommit",
-        "when": "scmInputIsInFirstPosition && scmRepository && !suggestWidgetVisible"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "selectPrevCodeAction",
-        "when": "codeActionMenuVisible"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "showPrevParameterHint",
-        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "workbench.action.interactivePlayground.arrowUp",
-        "when": "interactivePlaygroundFocus && !editorTextFocus"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "workbench.banner.focusPreviousAction",
-        "when": "bannerFocused"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "workbench.statusBar.focusPrevious",
-        "when": "statusBarFocused"
-    },
-    {
+    {  // navigateBack
         "key": "ctrl+shift+,",
         "command": "-editor.action.inPlaceReplace.up",
         "when": "editorTextFocus && !editorReadonly"
     },
-    {
+    {  // navigateForward
         "key": "ctrl+shift+.",
         "command": "-editor.action.inPlaceReplace.down",
         "when": "editorTextFocus && !editorReadonly"
