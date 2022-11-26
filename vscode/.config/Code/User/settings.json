@@ -1,8 +1,8 @@
 {
   "workbench.colorTheme": "Andromeda Colorizer",
   "editor.minimap.enabled": false,
-  "editor.fontSize": 16,
-  "terminal.integrated.fontSize": 16,
+  "editor.fontSize": 14,
+  "terminal.integrated.fontSize": 14,
   "editor.wordWrap": "wordWrapColumn",
   "editor.showFoldingControls": "always",
   "editor.folding": true,
@@ -32,97 +32,6 @@
   "vim.sneakReplacesF": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "editor.lineNumbers": "relative",
-  "vim.leader": "<space>",
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": ["j", "k"],
-      "after": ["<ESC>"]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<Leader>", "t", "t"],
-      "commands": [":tabnew"]
-    },
-    {
-      "before": ["<Leader>","t","o"],
-      "commands": [":tabo"]
-    },
-    {
-      "before": ["<Leader>", "/"],
-      "commands": [":nohl"]
-    },
-    {
-      "before": ["<Leader>", "p"],
-      "commands": ["workbench.action.showCommands"]
-    },
-    {
-      "before": [ "<Leader>", "t"],
-      "commands": ["workbench.action.gotoSymbol"]
-    },
-    { // <leader>,w instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
-      "before": ["<Leader>", "w", "j"],
-      "commands": ["workbench.action.moveEditorToBelowGroup"]
-    },
-    {
-      "before": ["<Leader>", "w", "l"],
-      "commands": ["workbench.action.moveEditorToRightGroup"]
-    },
-    {
-      "before": ["<Leader>", "w", "h"],
-      "commands": ["workbench.action.moveEditorToLeftGroup"]
-    },
-    {
-      "before": ["<Leader>", "w", "k"],
-      "commands": ["workbench.action.moveEditorToAboveGroup"]
-    },
-    {
-      "before": ["<Leader>", "w", "u"],
-      "commands": ["workbench.action.moveEditorToPreviousGroup"]
-    },
-    {
-      "before": ["<Leader>", "w", "q"],
-      "commands": ["workbench.action.joinAllGroups"]
-    }
-  ],
-"vim.normalModeKeyBindings": [
-    {
-      "before": ["<tab>"],
-      "commands": ["workbench.action.nextEditor"]
-    },
-    {
-      "before": ["<S-tab>"],
-      "commands": ["workbench.action.previousEditor"]
-    },
-  ],
-  "vim.visualModeKeyBindings": [
-    {
-      "before": [">"],
-      "after": [">", "g", "v"]
-    },
-    {
-      "before": ["<"],
-      "after": ["<", "g", "v"]
-    },
-    {
-      "before": ["i"],
-      "after": ["<Esc>", "i"]
-    }
-  ],
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false,  // vscode find
-    // VS Code new marker @ next occurence
-    "<C-c>": false,
-    // Cut
-    "<C-x>": false,
-    // Paste
-    "<C-v>": false,
-    "<C-z>": false,
-    "<C-y>": false,
-    "<C-k>": false,  // vscode key chord
-    "<C-w>": false,  // vscode closeEditor
-  },
   "vim.statusBarColorControl": true,
   "vim.statusBarColors.normal": [
     "#8FBCBB",
@@ -159,7 +68,7 @@
     "editorRuler.foreground": "#ff4081"
   },
   "redhat.telemetry.enabled": true,
-  "editor.scrollbar.verticalScrollbarSize": 24,
+  "editor.scrollbar.verticalScrollbarSize": 20,
   "notebook.compactView": false,
   "tabnine.experimentalAutoImports": true,
   "vs-kubernetes": {
@@ -169,5 +78,340 @@
   "files.exclude": {
     "": true,
     "**/.git": false
-  }
+  },
+  "git.confirmSync": false,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "k"],
+      "after": ["<ESC>"]
+    }
+  ],
+  "vspacecode.bindingOverrides": [
+    {
+      "keys": "n",
+      "name": "Notes...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "]",
+          "name": "Next sibling",
+          "type": "command",
+          "command": "dendron.goNextHierarchy",
+        },
+        {
+          "key": "[",
+          "name": "Previous sibling",
+          "type": "command",
+          "command": "dendron.goPrevHierarchy",
+        },
+        {
+          "key": "c",
+          "name": "Create...",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "c",
+              "name": "Child note",
+              "type": "command",
+              "command": "dendron.goDownHierarchy",
+            },
+            {
+              "key": "d",
+              "name": "Daily note",
+              "type": "command",
+              "command": "dendron.createDailyJournalNote",
+            },
+            {
+              "key": "j",
+              "name": "Journal note",
+              "type": "command",
+              "command": "dendron.createJournalNote",
+            },
+            {
+              "key": "m",
+              "name": "Meeting note",
+              "type": "command",
+              "command": "dendron.createMeetingNote",
+            },
+            {
+              "key": "t",
+              "name": "Task note",
+              "type": "command",
+              "command": "dendron.createTask",
+            },
+            {
+              "key": "x",
+              "name": "Scratch note",
+              "type": "command",
+              "command": "dendron.createScratchNote",
+            }
+          ]
+        },
+        {
+          "key": "D",
+          "name": "Delete note",
+          "type": "command",
+          "command": "dendron.delete",
+        },
+        {
+          "key": "g",
+          "name": "Goto...",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "b",
+              "name": "Backlink",
+              "type": "command",
+              "command": "dendron.gotoBacklink",
+            },
+            {
+              "key": "d",
+              "name": "Down Hierarchy",
+              "type": "command",
+              "command": "dendron.goDownHierarchy",
+            },
+            {
+              "key": "g",
+              "name": "Goto",
+              "type": "command",
+              "command": "dendron.goto",
+            },
+            {
+              "key": "j",
+              "name": "Down Hierarchy",
+              "type": "command",
+              "command": "dendron.goDownHierarchy",
+            },
+            {
+              "key": "k",
+              "name": "Meeting note",
+              "type": "command",
+              "command": "dendron.goUpHierarchy",
+            },
+            {
+              "key": "n",
+              "name": "Goto note",
+              "type": "command",
+              "command": "dendron.gotoNote",
+            },
+            {
+              "key": "s",
+              "name": "Settings",
+              "type": "command",
+              "command": "dendron.configureRaw",
+            },
+            {
+              "key": "u",
+              "name": "Up hierarchy",
+              "type": "command",
+              "command": "dendron.goUpHierarchy",
+            },
+          ]
+        },
+        {
+          "key": "h",
+          "name": "Refactor hierarchy",
+          "type": "command",
+          "command": "dendron.refactorHierarchy",
+        },
+        {
+          "key": "i",
+          "name": "Insert...",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "i",
+              "name": "Note Index",
+              "type": "command",
+              "command": "dendron.insertNoteIndex",
+            },
+            {
+              "key": "l",
+              "name": "Note Link",
+              "type": "command",
+              "command": "dendron.insertNoteLink",
+            },
+          ]
+        },
+        {
+          "key": "l",
+          "name": "Links...",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "n",
+              "name": "Copy Note Link",
+              "type": "command",
+              "command": "dendron.copyNoteLink",
+            },
+            {
+              "key": "r",
+              "name": "Note Ref",
+              "type": "command",
+              "command": "dendron.copyNoteRef",
+            },
+          ]
+        },
+        {
+          "key": "m",
+          "name": "Move...",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "n",
+              "name": "Move Note",
+              "type": "command",
+              "command": "dendron.moveNote",
+            },
+            {
+              "key": "h",
+              "name": "Move Header",
+              "type": "command",
+              "command": "dendron.moveHeader",
+            },
+            {
+              "key": "s",
+              "name": "Move Seletion to...",
+              "type": "command",
+              "command": "dendron.moveSelectionTo",
+            }
+          ]
+        },
+        {
+          "key": "o",
+          "name": "Browse (open) Note",
+          "type": "command",
+          "command": "dendron.browseNote",
+        },
+        {
+          "key": "r",
+          "name": "Reload Index",
+          "type": "command",
+          "command": "dendron.reloadIndex",
+        },
+        {
+          "key": "s",
+          "name": "Workspace Sync",
+          "type": "command",
+          "command": "dendron.sync",
+        },
+        {
+          "key": "S",
+          "name": "Lookup Schema",
+          "type": "command",
+          "command": "dendron.lookupSchema",
+        },
+        {
+          "key": "t",
+          "name": "Task...",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "c",
+              "name": "Complete Task",
+              "type": "command",
+              "command": "dendron.completeTask",
+            },
+            {
+              "key": "s",
+              "name": "Set State",
+              "type": "command",
+              "command": "dendron.setTaskStatus",
+            },
+          ]
+        }
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["whichkey.show"]
+    }
+  //   {
+  //     "before": ["<Leader>", "t", "t"],
+  //     "commands": [":tabnew"]
+  //   },
+  //   {
+  //     "before": ["<Leader>","t","o"],
+  //     "commands": [":tabo"]
+  //   },
+  //   {
+  //     "before": ["<Leader>", "/"],
+  //     "commands": [":nohl"]
+  //   },
+  //   {
+  //     "before": ["<Leader>", "p"],
+  //     "commands": ["workbench.action.showCommands"]
+  //   },
+  //   {
+  //     "before": [ "<Leader>", "t"],
+  //     "commands": ["workbench.action.gotoSymbol"]
+  //   },
+  //   { // <leader>,w instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
+  //     "before": ["<Leader>", "w", "j"],
+  //     "commands": ["workbench.action.moveEditorToBelowGroup"]
+  //   },
+  //   {
+  //     "before": ["<Leader>", "w", "l"],
+  //     "commands": ["workbench.action.moveEditorToRightGroup"]
+  //   },
+  //   {
+  //     "before": ["<Leader>", "w", "h"],
+  //     "commands": ["workbench.action.moveEditorToLeftGroup"]
+  //   },
+  //   {
+  //     "before": ["<Leader>", "w", "k"],
+  //     "commands": ["workbench.action.moveEditorToAboveGroup"]
+  //   },
+  //   {
+  //     "before": ["<Leader>", "w", "u"],
+  //     "commands": ["workbench.action.moveEditorToPreviousGroup"]
+  //   },
+  //   {
+  //     "before": ["<Leader>", "w", "q"],
+  //     "commands": ["workbench.action.joinAllGroups"]
+  //   }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<tab>"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<S-tab>"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["whichkey.show"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [">"],
+      "after": [">", "g", "v"]
+    },
+    {
+      "before": ["<"],
+      "after": ["<", "g", "v"]
+    },
+    {
+      "before": ["i"],
+      "after": ["<Esc>", "i"]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false,  // vscode select all
+    "<C-f>": false,  // vscode find
+    "<C-c>": false,  // vscode copy
+    "<C-x>": false,  // vscode cut
+    "<C-v>": false,  // vscode paste
+    "<C-z>": false,  // vscode undo
+    "<C-y>": false,  // vscode redo
+    "<C-k>": false,  // vscode key chord
+    "<C-w>": false,  // vscode closeEditor
+  },
 }
