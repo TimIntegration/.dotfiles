@@ -88,8 +88,8 @@
   ],
   "vspacecode.bindingOverrides": [
     {
-      "keys": "n",
-      "name": "Notes...",
+      "keys": "D",
+      "name": "Dendron...",
       "type": "bindings",
       "bindings": [
         {
@@ -106,7 +106,7 @@
         },
         {
           "key": "c",
-          "name": "Create...",
+          "name": "Create Note...",
           "type": "bindings",
           "bindings": [
             {
@@ -239,6 +239,12 @@
           "type": "bindings",
           "bindings": [
             {
+              "key": "l",
+              "name": "Lookup Note",
+              "type": "command",
+              "command": "dendron.lookupNote",
+            },
+            {
               "key": "n",
               "name": "Copy Note Link",
               "type": "command",
@@ -319,6 +325,37 @@
               "command": "dendron.setTaskStatus",
             },
           ]
+        },
+        { // w instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
+          "key": "w",
+          "name": "Editor Pane/Tab...",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "h",
+              "name": "move focus left",
+              "type": "command",
+              "command": "workbench.action.moveEditorToLeftGroup",
+            },
+            {
+              "key": "j",
+              "name": "move focus down",
+              "type": "command",
+              "command": "workbench.action.moveEditorToBelowGroup",
+            },
+            {
+              "key": "k",
+              "name": "move focus up",
+              "type": "command",
+              "command": "workbench.action.moveEditorToAboveGroup",
+            },
+            {
+              "key": "l",
+              "name": "move focus right",
+              "type": "command",
+              "command": "workbench.action.moveEditorToRightGroup",
+            },
+          ]
         }
       ]
     }
@@ -348,30 +385,7 @@
   //     "before": [ "<Leader>", "t"],
   //     "commands": ["workbench.action.gotoSymbol"]
   //   },
-  //   { // <leader>,w instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
-  //     "before": ["<Leader>", "w", "j"],
-  //     "commands": ["workbench.action.moveEditorToBelowGroup"]
-  //   },
-  //   {
-  //     "before": ["<Leader>", "w", "l"],
-  //     "commands": ["workbench.action.moveEditorToRightGroup"]
-  //   },
-  //   {
-  //     "before": ["<Leader>", "w", "h"],
-  //     "commands": ["workbench.action.moveEditorToLeftGroup"]
-  //   },
-  //   {
-  //     "before": ["<Leader>", "w", "k"],
-  //     "commands": ["workbench.action.moveEditorToAboveGroup"]
-  //   },
-  //   {
-  //     "before": ["<Leader>", "w", "u"],
-  //     "commands": ["workbench.action.moveEditorToPreviousGroup"]
-  //   },
-  //   {
-  //     "before": ["<Leader>", "w", "q"],
-  //     "commands": ["workbench.action.joinAllGroups"]
-  //   }
+
   ],
   "vim.normalModeKeyBindings": [
     {
@@ -390,15 +404,15 @@
     }
   ],
   "vim.visualModeKeyBindings": [
-    {
+    { // indent
       "before": [">"],
       "after": [">", "g", "v"]
     },
-    {
+    { // decrease indentation
       "before": ["<"],
       "after": ["<", "g", "v"]
     },
-    {
+    { // insert mode from visual mode
       "before": ["i"],
       "after": ["<Esc>", "i"]
     }
