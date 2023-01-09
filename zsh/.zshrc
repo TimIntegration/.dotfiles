@@ -23,6 +23,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add ~/.ssh/id_ed25519_w11
+fi
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -95,10 +100,10 @@ plugins=(
   last-working-dir
   extract
   colored-man-pages
-  ssh-agent
-  docker
-  minikube
-  virtualenv
+#   ssh-agent
+#   docker
+#   minikube
+#   virtualenv
   )
 
 source $ZSH/oh-my-zsh.sh
@@ -205,10 +210,10 @@ _fzf_comprun() {
 
 
 # https://unix.stackexchange.com/questions/90853/how-can-i-run-ssh-add-automatically-without-a-password-prompt
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-  ssh-add /home/$USER/.ssh/id_ed25519_u14
-fi
+# if [ -z "$SSH_AUTH_SOCK" ] ; then
+#   eval `ssh-agent -s`
+#   ssh-add ~/.ssh/github_id_ed25519.pk
+# fi
 
 
 
@@ -220,11 +225,11 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias setclip="xclip -selection c"
-alias getclip="xclip -selection c -o"
+# alias setclip="xclip -selection c"
+# alias getclip="xclip -selection c -o"
 
-alias k="kubectl"
-source <(kubectl completion zsh)
+# alias k="kubectl"
+# source <(kubectl completion zsh)
 
 alias fd=fdfind
 # https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
@@ -240,19 +245,3 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tenacity/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/tenacity/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/tenacity/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/tenacity/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
