@@ -245,3 +245,8 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# from https://stackoverflow.com/questions/10218946/upgrade-python-in-a-virtualenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
