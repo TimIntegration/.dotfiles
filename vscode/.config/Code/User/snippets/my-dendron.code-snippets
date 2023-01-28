@@ -9,7 +9,7 @@
 		],
 		"description": "markdown code block for python"
 	},
-	"filep": {
+	"flat filepath for dendron": {
 		"prefix": "filep",
 		"scope": "markdown,yaml",
 		"body": [
