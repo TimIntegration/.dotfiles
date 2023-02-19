@@ -1,5 +1,4 @@
 {
-  "workbench.colorTheme": "Andromeda Colorizer",
   "editor.minimap.enabled": false,
   "editor.fontSize": 14,
   "terminal.integrated.fontSize": 14,
@@ -12,7 +11,10 @@
   // "security.workspace.trust.enabled": false,
   // "debug.javascript.codelens.npmScripts": "never",
   "workbench.statusBar.visible": true,
-  "editor.rulers": [ 80, 120 ],
+  "editor.rulers": [
+    80,
+    120
+  ],
   "files.associations": {
     "*.js": "javascriptreact"
   },
@@ -67,14 +69,8 @@
     "statusBar.debuggingForeground": "#000",
     "editorRuler.foreground": "#ff4081"
   },
-  "redhat.telemetry.enabled": true,
   "editor.scrollbar.verticalScrollbarSize": 20,
   "notebook.compactView": false,
-  "tabnine.experimentalAutoImports": true,
-  "vs-kubernetes": {
-    "vscode-kubernetes.minikube-path.linux": "/home/tenacity/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
-    "vscode-kubernetes.helm-path.linux": "/home/tenacity/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm"
-  },
   "files.exclude": {
     "": true,
     "**/.git": false
@@ -82,13 +78,141 @@
   "git.confirmSync": false,
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": ["j", "k"],
-      "after": ["<ESC>"]
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<ESC>"
+      ]
+    },
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<ESC>"
+      ]
     }
   ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "vspacecode.space"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "vspacecode.space"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<tab>"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    {
+      "before": [
+        "<S-tab>"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+  ],
+  "vim.visualModeKeyBindings": [
+    { // indent
+      "before": [
+        ">"
+      ],
+      "after": [
+        ">",
+        "g",
+        "v"
+      ]
+    },
+    { // decrease indentation
+      "before": [
+        "<"
+      ],
+      "after": [
+        "<",
+        "g",
+        "v"
+      ]
+    },
+    { // insert mode from visual mode
+      "before": [
+        "i"
+      ],
+      "after": [
+        "<Esc>",
+        "i"
+      ]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false, // vscode select all
+    "<C-f>": false, // vscode find
+    "<C-c>": false, // vscode copy
+    "<C-x>": false, // vscode cut
+    "<C-v>": false, // vscode paste
+    "<C-z>": false, // vscode undo
+    "<C-y>": false, // vscode redo
+    "<C-k>": false, // vscode key chord
+    "<C-w>": false, // vscode closeEditor
+  },
+  "editor.accessibilitySupport": "off",
+  "git.autofetch": true,
+  "editor.inlineSuggest.enabled": true,
   "vspacecode.bindingOverrides": [
     {
-      "keys": "D",
+      "keys": "c",
+      "name": "Copilot...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "]",
+          "name": "Next suggestion, Alt+]",
+          "type": "command",
+          "command": "editor.action.inlineSuggest.showNext",
+        },
+        {
+          "key": "[",
+          "name": "Previous suggestion, Alt+[",
+          "type": "command",
+          "command": "editor.action.inlineSuggest.showPrevious",
+        },
+        {
+          "key": "e",
+          "name": "Dismiss all, Esc",
+          "type": "command",
+          "command": "editor.action.inlineSuggest.hide",
+        },
+        {
+          "key": "m",
+          "name": "Multiple suggestions in new tab, Ctrl+Enter",
+          "type": "command",
+          "command": "github.copilot.generate",
+        },
+      ]
+    },
+    {
+      "keys": "n",
       "name": "Dendron...",
       "type": "bindings",
       "bindings": [
@@ -326,106 +450,13 @@
             },
           ]
         },
-        { // w instead of ctrl+w https://linuxhint.com/how-to-use-vim-split-screen/
-          "key": "w",
-          "name": "Editor Pane/Tab...",
-          "type": "bindings",
-          "bindings": [
-            {
-              "key": "h",
-              "name": "move focus left",
-              "type": "command",
-              "command": "workbench.action.moveEditorToLeftGroup",
-            },
-            {
-              "key": "j",
-              "name": "move focus down",
-              "type": "command",
-              "command": "workbench.action.moveEditorToBelowGroup",
-            },
-            {
-              "key": "k",
-              "name": "move focus up",
-              "type": "command",
-              "command": "workbench.action.moveEditorToAboveGroup",
-            },
-            {
-              "key": "l",
-              "name": "move focus right",
-              "type": "command",
-              "command": "workbench.action.moveEditorToRightGroup",
-            },
-          ]
-        }
       ]
     }
   ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<space>"],
-      "commands": ["whichkey.show"]
-    }
-  //   {
-  //     "before": ["<Leader>", "t", "t"],
-  //     "commands": [":tabnew"]
-  //   },
-  //   {
-  //     "before": ["<Leader>","t","o"],
-  //     "commands": [":tabo"]
-  //   },
-  //   {
-  //     "before": ["<Leader>", "/"],
-  //     "commands": [":nohl"]
-  //   },
-  //   {
-  //     "before": ["<Leader>", "p"],
-  //     "commands": ["workbench.action.showCommands"]
-  //   },
-  //   {
-  //     "before": [ "<Leader>", "t"],
-  //     "commands": ["workbench.action.gotoSymbol"]
-  //   },
-
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<tab>"],
-      "commands": ["workbench.action.nextEditor"]
-    },
-    {
-      "before": ["<S-tab>"],
-      "commands": ["workbench.action.previousEditor"]
-    },
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<space>"],
-      "commands": ["whichkey.show"]
-    }
-  ],
-  "vim.visualModeKeyBindings": [
-    { // indent
-      "before": [">"],
-      "after": [">", "g", "v"]
-    },
-    { // decrease indentation
-      "before": ["<"],
-      "after": ["<", "g", "v"]
-    },
-    { // insert mode from visual mode
-      "before": ["i"],
-      "after": ["<Esc>", "i"]
-    }
-  ],
-  "vim.handleKeys": {
-    "<C-a>": false,  // vscode select all
-    "<C-f>": false,  // vscode find
-    "<C-c>": false,  // vscode copy
-    "<C-x>": false,  // vscode cut
-    "<C-v>": false,  // vscode paste
-    "<C-z>": false,  // vscode undo
-    "<C-y>": false,  // vscode redo
-    "<C-k>": false,  // vscode key chord
-    "<C-w>": false,  // vscode closeEditor
-  },
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true
+  }
 }
