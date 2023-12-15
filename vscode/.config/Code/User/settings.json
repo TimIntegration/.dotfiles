@@ -11,29 +11,27 @@
   // "security.workspace.trust.enabled": false,
   // "debug.javascript.codelens.npmScripts": "never",
   "workbench.statusBar.visible": true,
-  "editor.rulers": [
-    80,
-    120
-  ],
+  "editor.rulers": [ 80, 120 ],
   "files.associations": {
     "*.js": "javascriptreact"
   },
-  "editor.fontFamily": "'MesloLGS NF','Droid Sans Mono', monospace",
+  "editor.fontFamily": "'MesloLGS NF','Cascadia Code','Droid Sans Mono', monospace",
   "editor.formatOnPaste": true,
   "editor.fontLigatures": true,
   "disableLigatures.mode": "Line",
   "editor.renderWhitespace": "all",
   "vim.startInInsertMode": true,
   "files.autoSave": "onFocusChange",
-  "vim.easymotion": true,
+  "vim.easymotion": false,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
+  "vim.useCtrlKeys": false,
   "vim.hlsearch": true,
-  "vim.sneak": true,
+  "vim.sneak": false,
   "vim.sneakReplacesF": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "editor.lineNumbers": "relative",
+  "vim.handleKeys": { "<C-c>": false, "<C-v>": false },
   "vim.statusBarColorControl": true,
   "vim.statusBarColors.normal": [
     "#8FBCBB",
@@ -78,105 +76,52 @@
   "git.confirmSync": false,
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "j",
-        "k"
-      ],
-      "after": [
-        "<ESC>"
-      ]
+      "before": ["j", "k"],
+      "after": ["<ESC>"]
     },
     {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<ESC>"
-      ]
+      "before": ["j", "j"],
+      "after": ["<ESC>"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     }
   ],
   "vim.normalModeKeyBindings": [
     {
-      "before": [
-        "<tab>"
-      ],
-      "commands": [
-        "workbench.action.nextEditor"
-      ]
+      "before": ["<tab>"],
+      "commands": ["workbench.action.nextEditor"]
     },
     {
-      "before": [
-        "<S-tab>"
-      ],
-      "commands": [
-        "workbench.action.previousEditor"
-      ]
+      "before": ["<S-tab>"],
+      "commands": ["workbench.action.previousEditor"]
     },
   ],
+
   "vim.visualModeKeyBindings": [
     { // indent
-      "before": [
-        ">"
-      ],
-      "after": [
-        ">",
-        "g",
-        "v"
-      ]
+      "before": [">"],
+      "after": [">", "g", "v"]
     },
     { // decrease indentation
-      "before": [
-        "<"
-      ],
-      "after": [
-        "<",
-        "g",
-        "v"
-      ]
+      "before": ["<"],
+      "after": ["<", "g", "v"]
     },
     { // insert mode from visual mode
-      "before": [
-        "i"
-      ],
-      "after": [
-        "<Esc>",
-        "i"
-      ]
+      "before": ["i"],
+      "after": ["<Esc>", "i"]
     }
   ],
-  "vim.handleKeys": {
-    "<C-a>": false, // vscode select all
-    "<C-f>": false, // vscode find
-    "<C-c>": false, // vscode copy
-    "<C-x>": false, // vscode cut
-    "<C-v>": false, // vscode paste
-    "<C-z>": false, // vscode undo
-    "<C-y>": false, // vscode redo
-    "<C-k>": false, // vscode key chord
-    "<C-w>": false, // vscode closeEditor
-  },
-  "editor.accessibilitySupport": "off",
+  // "editor.accessibilitySupport": "off",
   "git.autofetch": true,
   "editor.inlineSuggest.enabled": true,
   "vspacecode.bindingOverrides": [
@@ -186,29 +131,71 @@
       "type": "bindings",
       "bindings": [
         {
-          "key": "]",
-          "name": "Next suggestion, Alt+]",
+          "key": "c",
+          "name": "Open chat",
           "type": "command",
-          "command": "editor.action.inlineSuggest.showNext",
+          "command": "workbench.action.openChat.copilot"
         },
         {
-          "key": "[",
-          "name": "Previous suggestion, Alt+[",
+          "key": "q",
+          "name": "Open quick chat",
           "type": "command",
-          "command": "editor.action.inlineSuggest.showPrevious",
+          "command": "workbench.action.openQuickChat.copilot"
+        },
+        {
+          "key": "i",
+          "name": "Start inline chat",
+          "type": "command",
+          "command": "inlineChat.start"
         },
         {
           "key": "e",
+          "name": "Explain this",
+          "type": "command",
+          "command": "github.copilot.interactiveEditor.explain"
+        },
+        {
+          "key": "f",
+          "name": "Fix this",
+          "type": "command",
+          "command": "github.copilot.interactiveEditor.fix"
+        },
+        {
+          "key": "d",
+          "name": "Generate docs",
+          "type": "command",
+          "command": "github.copilot.interactiveEditor.generateDocs"
+        },
+        {
+          "key": "t",
+          "name": "Generate tests",
+          "type": "command",
+          "command": "github.copilot.interactiveEditor.generateTests"
+        },
+        {
+          "key": "E",
           "name": "Dismiss all, Esc",
           "type": "command",
-          "command": "editor.action.inlineSuggest.hide",
+          "command": "editor.action.inlineSuggest.hide"
+        },
+        {
+          "key": "g",
+          "name": "Generate This",
+          "type": "command",
+          "command": "github.copilot.interactiveEditor.generate"
         },
         {
           "key": "m",
-          "name": "Multiple suggestions in new tab, Ctrl+Enter",
+          "name": "Multiple suggestions in completion panel, Ctrl+Enter",
           "type": "command",
-          "command": "github.copilot.generate",
+          "command": "github.copilot.generate"
         },
+        {
+          "key": "n",
+          "name": "Accept next word of inline suggestion, Ctrl+RightArrow",
+          "type": "command",
+          "command": "editor.action.inlineSuggest.acceptNextWord"
+        }
       ]
     },
     {
@@ -220,13 +207,13 @@
           "key": "]",
           "name": "Next sibling",
           "type": "command",
-          "command": "dendron.goNextHierarchy",
+          "command": "dendron.goNextHierarchy"
         },
         {
           "key": "[",
           "name": "Previous sibling",
           "type": "command",
-          "command": "dendron.goPrevHierarchy",
+          "command": "dendron.goPrevHierarchy"
         },
         {
           "key": "c",
@@ -237,37 +224,37 @@
               "key": "c",
               "name": "Child note",
               "type": "command",
-              "command": "dendron.goDownHierarchy",
+              "command": "dendron.goDownHierarchy"
             },
             {
               "key": "d",
               "name": "Daily note",
               "type": "command",
-              "command": "dendron.createDailyJournalNote",
+              "command": "dendron.createDailyJournalNote"
             },
             {
               "key": "j",
               "name": "Journal note",
               "type": "command",
-              "command": "dendron.createJournalNote",
+              "command": "dendron.createJournalNote"
             },
             {
               "key": "m",
               "name": "Meeting note",
               "type": "command",
-              "command": "dendron.createMeetingNote",
+              "command": "dendron.createMeetingNote"
             },
             {
               "key": "t",
               "name": "Task note",
               "type": "command",
-              "command": "dendron.createTask",
+              "command": "dendron.createTask"
             },
             {
               "key": "x",
               "name": "Scratch note",
               "type": "command",
-              "command": "dendron.createScratchNote",
+              "command": "dendron.createScratchNote"
             }
           ]
         },
@@ -275,7 +262,7 @@
           "key": "D",
           "name": "Delete note",
           "type": "command",
-          "command": "dendron.delete",
+          "command": "dendron.delete"
         },
         {
           "key": "g",
@@ -286,57 +273,57 @@
               "key": "b",
               "name": "Backlink",
               "type": "command",
-              "command": "dendron.gotoBacklink",
+              "command": "dendron.gotoBacklink"
             },
             {
               "key": "d",
               "name": "Down Hierarchy",
               "type": "command",
-              "command": "dendron.goDownHierarchy",
+              "command": "dendron.goDownHierarchy"
             },
             {
               "key": "g",
               "name": "Goto",
               "type": "command",
-              "command": "dendron.goto",
+              "command": "dendron.goto"
             },
             {
               "key": "j",
               "name": "Down Hierarchy",
               "type": "command",
-              "command": "dendron.goDownHierarchy",
+              "command": "dendron.goDownHierarchy"
             },
             {
               "key": "k",
               "name": "Meeting note",
               "type": "command",
-              "command": "dendron.goUpHierarchy",
+              "command": "dendron.goUpHierarchy"
             },
             {
               "key": "n",
               "name": "Goto note",
               "type": "command",
-              "command": "dendron.gotoNote",
+              "command": "dendron.gotoNote"
             },
             {
               "key": "s",
               "name": "Settings",
               "type": "command",
-              "command": "dendron.configureRaw",
+              "command": "dendron.configureRaw"
             },
             {
               "key": "u",
               "name": "Up hierarchy",
               "type": "command",
-              "command": "dendron.goUpHierarchy",
-            },
+              "command": "dendron.goUpHierarchy"
+            }
           ]
         },
         {
           "key": "h",
           "name": "Refactor hierarchy",
           "type": "command",
-          "command": "dendron.refactorHierarchy",
+          "command": "dendron.refactorHierarchy"
         },
         {
           "key": "i",
@@ -347,14 +334,14 @@
               "key": "i",
               "name": "Note Index",
               "type": "command",
-              "command": "dendron.insertNoteIndex",
+              "command": "dendron.insertNoteIndex"
             },
             {
               "key": "l",
               "name": "Note Link",
               "type": "command",
-              "command": "dendron.insertNoteLink",
-            },
+              "command": "dendron.insertNoteLink"
+            }
           ]
         },
         {
@@ -366,20 +353,20 @@
               "key": "l",
               "name": "Lookup Note",
               "type": "command",
-              "command": "dendron.lookupNote",
+              "command": "dendron.lookupNote"
             },
             {
               "key": "n",
               "name": "Copy Note Link",
               "type": "command",
-              "command": "dendron.copyNoteLink",
+              "command": "dendron.copyNoteLink"
             },
             {
               "key": "r",
               "name": "Note Ref",
               "type": "command",
-              "command": "dendron.copyNoteRef",
-            },
+              "command": "dendron.copyNoteRef"
+            }
           ]
         },
         {
@@ -391,19 +378,19 @@
               "key": "n",
               "name": "Move Note",
               "type": "command",
-              "command": "dendron.moveNote",
+              "command": "dendron.moveNote"
             },
             {
               "key": "h",
               "name": "Move Header",
               "type": "command",
-              "command": "dendron.moveHeader",
+              "command": "dendron.moveHeader"
             },
             {
               "key": "s",
               "name": "Move Seletion to...",
               "type": "command",
-              "command": "dendron.moveSelectionTo",
+              "command": "dendron.moveSelectionTo"
             }
           ]
         },
@@ -411,25 +398,25 @@
           "key": "o",
           "name": "Browse (open) Note",
           "type": "command",
-          "command": "dendron.browseNote",
+          "command": "dendron.browseNote"
         },
         {
           "key": "r",
           "name": "Reload Index",
           "type": "command",
-          "command": "dendron.reloadIndex",
+          "command": "dendron.reloadIndex"
         },
         {
           "key": "s",
           "name": "Workspace Sync",
           "type": "command",
-          "command": "dendron.sync",
+          "command": "dendron.sync"
         },
         {
           "key": "S",
           "name": "Lookup Schema",
           "type": "command",
-          "command": "dendron.lookupSchema",
+          "command": "dendron.lookupSchema"
         },
         {
           "key": "t",
@@ -440,15 +427,296 @@
               "key": "c",
               "name": "Complete Task",
               "type": "command",
-              "command": "dendron.completeTask",
+              "command": "dendron.completeTask"
             },
             {
               "key": "s",
               "name": "Set State",
               "type": "command",
-              "command": "dendron.setTaskStatus",
-            },
+              "command": "dendron.setTaskStatus"
+            }
           ]
+        }
+      ]
+    },
+    {
+      "keys": "w",
+      "name": "Workbench ...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "h",
+          "name": "Navigate left",
+          "type": "command",
+          "command": "workbench.action.navigateLeft"
+        },
+        {
+          "key": "l",
+          "name": "Navigate right",
+          "type": "command",
+          "command": "workbench.action.navigateRight"
+        },
+        {
+          "key": "k",
+          "name": "Navigate up",
+          "type": "command",
+          "command": "workbench.action.navigateUp"
+        },
+        {
+          "key": "j",
+          "name": "Navigate down",
+          "type": "command",
+          "command": "workbench.action.navigateDown"
+        },
+        {
+          "key": ",",
+          "name": "Navigate back",
+          "type": "command",
+          "command": "workbench.action.navigateBack"
+        },
+        {
+          "key": ".",
+          "name": "Navigate forward",
+          "type": "command",
+          "command": "workbench.action.navigateForward"
+        }
+      ]
+    },
+    {
+      "keys": "w.s",
+      "name": "Split Editor...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "\\",
+          "name": "Split Editor",
+          "type": "command",
+          "command": "workbench.action.splitEditor"
+        },
+        {
+          "key": "h",
+          "name": "Split Editor Left",
+          "type": "command",
+          "command": "workbench.action.splitEditorLeft"
+        },
+        {
+          "key": "j",
+          "name": "Split Editor Down",
+          "type": "command",
+          "command": "workbench.action.splitEditorDown"
+        },
+        {
+          "key": "k",
+          "name": "Split Editor Up",
+          "type": "command",
+          "command": "workbench.action.splitEditorUp"
+        },
+        {
+          "key": "l",
+          "name": "Split Editor Right",
+          "type": "command",
+          "command": "workbench.action.splitEditorRight"
+        },
+        {
+          "key": "i",
+          "name": "Split Editor InGroup Toggle",
+          "type": "command",
+          "command": "workbench.action.toggleSplitEditorInGroup"
+        },
+        {
+          "key": "u",
+          "name": "UnSplit Editor",
+          "type": "command",
+          "command": "workbench.action.joinTwoGroups"
+        }
+      ]
+    },
+    {
+      "keys": "M",
+      "name": "Multi-cursor and selection...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "Insert cursor above, Ctrl+Alt+UpArrow",
+          "type": "command",
+          "command": "editor.action.insertCursorAbove"
+        },
+        {
+          "key": "b",
+          "name": "Insert cursor below, Ctrl+Alt+DownArrow",
+          "type": "command",
+          "command": "editor.action.insertCursorBelow"
+        },
+        {
+          "key": "i",
+          "name": "Add Cursors to Line Ends, shift+alt+i",
+          "type": "command",
+          "command": "editor.action.insertCursorAtEndOfEachLineSelected"
+        },
+        {
+          "key": "d",
+          "name": "Add Selection To Next Find Match, ctrl+d",
+          "type": "command",
+          "command": "editor.action.addSelectionToNextFindMatch"
+        },
+        {
+          "key": "l",
+          "name": "Select All Occurrences of Find Match, ctrl+shift+l",
+          "type": "command",
+          "command": "editor.action.selectHighlights"
+        }
+      ]
+    },
+    {
+      "keys": "R",
+      "name": "Rich languages editing...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": " ",
+          "name": "Trigger suggestion, Ctrl+space",
+          "type": "command",
+          "command": "editor.action.triggerSuggest"
+        },
+        {
+          "key": "p",
+          "name": "Trigger parameter hints, Ctrl+Shift+Space",
+          "type": "command",
+          "command": "editor.action.triggerParameterHints"
+        },
+        {
+          "key": "d",
+          "name": "Format document, Shift+Alt+F",
+          "type": "command",
+          "command": "editor.action.formatDocument"
+        },
+        {
+          "key": "s",
+          "name": "Format selection, Ctrl+K Ctrl+F",
+          "type": "command",
+          "command": "editor.action.formatSelection"
+        },
+        {
+          "key": "g",
+          "name": "Go to Definition, F12",
+          "type": "command",
+          "command": "editor.action.revealDefinition"
+        },
+        {
+          "key": "t",
+          "name": "Peek Definition, Alt+F12",
+          "type": "command",
+          "command": "editor.action.peekDefinition"
+        },
+        {
+          "key": "b",
+          "name": "Open Definition to the side, Ctrl+K F12",
+          "type": "command",
+          "command": "editor.action.revealDefinitionAside"
+        },
+        {
+          "key": "q",
+          "name": "Quick Fix, Ctrl+.",
+          "type": "command",
+          "command": "editor.action.quickFix"
+        },
+        {
+          "key": "r",
+          "name": "Show References, Shift+F12",
+          "type": "command",
+          "command": "editor.action.goToReferences"
+        },
+        {
+          "key": "R",
+          "name": "Rename Symbol, F2",
+          "type": "command",
+          "command": "editor.action.rename"
+        },
+        {
+          "key": "w",
+          "name": "Trim trailing whitespace, Ctrl+K Ctrl+X",
+          "type": "command",
+          "command": "editor.action.trimTrailingWhitespace"
+        },
+        {
+          "key": "l",
+          "name": "Change file language, Ctrl+K M",
+          "type": "command",
+          "command": "workbench.action.editor.changeLanguageMode"
+        }
+      ]
+    },
+    {
+      "keys": "J",
+      "name": "Fold, Unfold, Scroll...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": ",",
+          "name": "Jump to matching bracket, Ctrl+Shift+\\",
+          "type": "command",
+          "command": "editor.action.jumpToBracket"
+        },
+        {
+          "key": "j",
+          "name": "Scroll line down, Ctrl+↓",
+          "type": "command",
+          "command": "scrollLineDown"
+        },
+        {
+          "key": "k",
+          "name": "Scroll line up, Ctrl+↑",
+          "type": "command",
+          "command": "scrollLineUp"
+        },
+        {
+          "key": "J",
+          "name": "Scroll page down, Alt+PgDn",
+          "type": "command",
+          "command": "scrollPageDown"
+        },
+        {
+          "key": "K",
+          "name": "Scroll page up, Alt+PgUp",
+          "type": "command",
+          "command": "scrollPageUp"
+        },
+        {
+          "key": "l",
+          "name": "Fold (collapse) region, Ctrl+Shift+[",
+          "type": "command",
+          "command": "editor.fold"
+        },
+        {
+          "key": ";",
+          "name": "Unfold (uncollapse) region, Ctrl+Shift+]",
+          "type": "command",
+          "command": "editor.unfold"
+        },
+        {
+          "key": ".",
+          "name": "Fold (collapse) all subregions, Ctrl+K Ctrl+[",
+          "type": "command",
+          "command": "editor.foldRecursively"
+        },
+        {
+          "key": "/",
+          "name": "Unfold (uncollapse) all subregions, Ctrl+K Ctrl+]",
+          "type": "command",
+          "command": "editor.unfoldRecursively"
+        },
+        {
+          "key": "[",
+          "name": "Fold (collapse) all regions, Ctrl+K Ctrl+0",
+          "type": "command",
+          "command": "editor.foldAll"
+        },
+        {
+          "key": "]",
+          "name": "Unfold (uncollapse) all regions, Ctrl+K Ctrl+J",
+          "type": "command",
+          "command": "editor.unfoldAll"
         },
       ]
     }
@@ -458,5 +726,13 @@
     "yaml": false,
     "plaintext": false,
     "markdown": true
-  }
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "editor.inlineSuggest.showToolbar": "always",
+  "files.defaultLanguage": "markdown",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.sideBar.location": "right",
+  "jupyter.interactiveWindow.textEditor.executeSelection": true
 }
