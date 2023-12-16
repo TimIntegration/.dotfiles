@@ -719,6 +719,43 @@
           "command": "editor.unfoldAll"
         },
       ]
+    },
+    {
+      "keys": "u",
+      "name": "Jupyter Notebook...",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "c",
+          "name": "Change Cell to Code, Esc+y",
+          "type": "command",
+          "command": "notebook.cell.changeToCode"
+        },
+        {
+          "key": "m",
+          "name": "Change Cell to Markdown, Esc+m",
+          "type": "command",
+          "command": "notebook.cell.changeToMarkdown"
+        },
+        {
+          "key": "r",
+          "name": "Run Current Cell, Ctrl+Enter",
+          "type": "command",
+          "command": "notebook.cell.executeAndFocusContainer"
+        },
+        // {
+        //   "key": "s",
+        //   "name": "Select Cell, Ctrl+Shift+Alt+\\",
+        //   "type": "command",
+        //   "command": "notebook.cell.selectCell"
+        // },
+        {
+          "key": "k",
+          "name": "Restart Kernel",
+          "type": "command",
+          "command": "jupyter.restartkernel"
+        },
+      ]
     }
   ],
   "github.copilot.enable": {
