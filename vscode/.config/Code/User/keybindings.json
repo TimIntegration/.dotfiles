@@ -55,8 +55,7 @@
     },
     {
         "key": "ctrl+shift+alt+space",
-        "command": "vspacecode.space",
-        "when": "editorTextFocus"
+        "command": "vspacecode.space"
     },
     {
         "key": "tab",
@@ -165,5 +164,10 @@
         "key": "space",
         "command": "vspacecode.space",
         "when": "sideBarFocus && !inputFocus && !whichkeyActive"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "editor.action.selectAll",
+        "when": "editorFocus"
     },
 ]
